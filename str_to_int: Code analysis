@@ -1,30 +1,44 @@
-class Solution:
-    def myAtoi(self, str: str) -> int:
-        
-        ### FULL CODE AVAILABLE IN: "str_to_int_code" 
-        
-        for i in range(len(find_number)):   # For loop for debugging not integer elements in the string.
-            num_let = find_number[i]
-            if num_let == '-':    # In case we have a "-" sign, it's stored in "sign_event" as "-1".
-                sign_event = -1
-            try:
-                numbers.append(int(num_let))   # List of debugged integers.
-            except:
-                continue
-                
-        for j in range(len(numbers)):   # For loop to get the final integer value.
-            x = len(numbers) - counter   # Integer element power.
-            new_number = numbers[j] * (10 ** x)   # Every "new_number" has a power, that is related with the place of the integer
-            final_number += new_number            # in the final value.
-            if x == 0:
-                break
-            counter += 1 
-        
-        final_number = final_number * sign_event   # Multiplication with the "sign_event", only if sign_event == -1, the final
-                                                   # number will be presented as a negative string.
-        if final_number >= 2147483647:   # Special case (1): if the number in greater or equal than (2^31 - 1).
-                return 2147483647   
-        if final_number <= -2147483648:   # Special case (2): if the number is less or equal than (2^31).
-                return -2147483648
-        
-        return final_number    # Return final integer value, END OF THE PROGRAM.
+### FULL CODE AVAILABLE IN: "str_to_int_code.py" 
+https://github.com/BrianSarmina/str_to_integer-atoi-/blob/master/str_to_int_code.py
+ 
+In this document is going to be found the practical analysis of the code solution for the problem "String to Integer (atoi)"
+from LeetCode, the analysis is separated in "First step" and "Second step".
+ 
+For the "First step" we have the "main part" of the program, which consist in "debugging" the evaluated string (contained in
+find_number) from all the non-integer values. 
+
+The "First step" iterates over all the elements in the original string "find_number", where in line (16) it evaluates if a "-"
+sign is present in the string, this is called a "sign_event", after the evaluation, from lines (19 to 22) We take advantage of
+the operation of python (from the standard library), creating a test using "try" and "except", which basically allows us to
+establish whether the element under evaluation is an integer (append to debugged list "numbers") or not (continue with the rest
+of the elements).
+
+An approximation of the computational complexity of "First step" is (roughly): O(n) considering that a linear search is
+carried out where "n" is the number of elements in the evaluated string, deepening a little more we can stablish the "counting
+instructions" as f(n) = 1 + 2*n + 1, where the "first 1" is the variable assignment (line 24), the "2*n" corresponds to the
+two evaluations applied inside the for loop (lines 26 and 28), and the "last 1" corresponds to the "insertion" of the
+debugged element in the list "numbers.
+
+----------------------------------------------------------------------------------------------------
+ **First step**   
+for i in range(len(find_number)):   # For loop for debugging not integer elements in the string.
+    num_let = find_number[i]
+    if num_let == '-':    # In case we have a "-" sign, it's stored in "sign_event" as "-1".
+        sign_event = -1
+    try:
+        numbers.append(int(num_let))   # List of debugged integers.
+    except:
+        continue
+----------------------------------------------------------------------------------------------------       
+
+----------------------------------------------------------------------------------------------------
+** Second step **
+
+for j in range(len(numbers)):   # For loop to get the final integer value.
+    x = len(numbers) - counter   # Integer element power.
+    new_number = numbers[j] * (10 ** x)   # Every "new_number" has a power, that is related with the place of the integer
+    final_number += new_number            # in the final value.
+    if x == 0:
+        break
+    counter += 1 
+----------------------------------------------------------------------------------------------------
