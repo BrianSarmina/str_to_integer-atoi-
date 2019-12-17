@@ -1,0 +1,40 @@
+Using the five examples provided in the "String to Integer (atoi)" and one self tested example to verify the "maximum integer"
+condition, the following results were obtained.
+
+Example 1:
+  -Input: "42"
+  -Expected output: 42
+  -Obtained output: 42
+  -Runtime: 36ms
+  
+Example 2:
+  -Input: "   -42"
+  -Expected output: -42
+  -Obtained output: -42
+  -Runtime: 40ms
+  
+Example 3:
+  -Input: "4193 with words"
+  -Expected output: 4193
+  -Obtained output: 4193
+  -Runtime: 40ms
+   
+Example 4:
+  -Input: "words and 987"
+  -Expected output: 0
+  -Obtained output: 0
+  -Runtime: 56ms
+  
+Example 5:
+  -Input: "-91283472332"
+  -Expected output: -2147483648
+  -Obtained output: -2147483648
+  -Runtime: 56ms
+  
+Example 6 (self tested):
+  -Input: "9123399472332"
+  -Expected output: 2147483647
+  -Obtained output: 2147483647
+  -Runtime: 40ms
+  
+  
