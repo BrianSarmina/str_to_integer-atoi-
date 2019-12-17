@@ -31,6 +31,16 @@ for i in range(len(find_number)):   # For loop for debugging not integer element
         continue
 ----------------------------------------------------------------------------------------------------       
 
+For the "Second step", we have the final result development. The main idea here is to generate an iteravite "addition" the
+debugged elements of the list "numbers" (only integers list), the "secret" is to give each number a power depending on its
+position in the list of "numbers" (lines 41 and 42), and with each iteration the "power" counter (line 47) increments, and,
+as a result, the integer element power (line 42) decreases.
+
+As in the "First step", the "Second step" has (roughly) a computational complexity of O(m) where "m" is equal to (n - k) ("k"
+is the debugged elements of the original string). The "counting instructions" can be described as (approximately) f(m) = m + 5
+where the "m" is the "len(numbers)", and the "5" corresponds to the operations (lines 46, 47, 48 and 51) and the stop 
+condition (line 49).
+
 ----------------------------------------------------------------------------------------------------
 ** Second step **
 
