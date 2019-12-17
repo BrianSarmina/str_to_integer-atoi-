@@ -1,40 +1,62 @@
-Using the five examples provided in the "String to Integer (atoi)" and one self tested example to verify the "maximum integer"
-condition, the following results were obtained.
+General information of submission taken from LeetCode "https://leetcode.com/problems/string-to-integer-atoi/submissions/".
+
+Status: 
+-Success
+Details:
+-Runtime: 44 ms, faster than 32.31% of Python3 online submissions for String to Integer (atoi).
+-Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for String to Integer (atoi).
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Using the five examples provided in the "String to Integer (atoi)" and three self tested examples to verify other possible
+scenarios, the following results were obtained.
 
 Example 1:
   -Input: "42"
   -Expected output: 42
   -Obtained output: 42
-  -Runtime: 36ms
+  -Runtime: 68ms
   
 Example 2:
   -Input: "   -42"
   -Expected output: -42
   -Obtained output: -42
-  -Runtime: 40ms
+  -Runtime: 44ms
   
 Example 3:
   -Input: "4193 with words"
   -Expected output: 4193
   -Obtained output: 4193
-  -Runtime: 40ms
+  -Runtime: 44ms
    
 Example 4:
   -Input: "words and 987"
   -Expected output: 0
   -Obtained output: 0
-  -Runtime: 56ms
+  -Runtime: 36ms
   
 Example 5:
   -Input: "-91283472332"
   -Expected output: -2147483648
   -Obtained output: -2147483648
-  -Runtime: 56ms
+  -Runtime: 76ms
   
 Example 6 (self tested):
   -Input: "9123399472332"
   -Expected output: 2147483647
   -Obtained output: 2147483647
-  -Runtime: 40ms
+  -Runtime: 56ms
+  
+Example 7 (self tested):
+  -Input: "45w.111"
+  -Expected output: 45
+  -Obtained output: 45
+  -Runtime: 48ms
+ 
+Example 8 (self tested):
+  -Input: "-+87391"
+  -Expected output: 0
+  -Obtained output: 0
+  -Runtime: 56ms
   
   
