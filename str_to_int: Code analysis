@@ -7,39 +7,56 @@ from LeetCode, the analysis is separated in "First step" and "Second step".
 For the "First step" we have the "main part" of the program, which consist in "debugging" the evaluated string (contained in
 find_number) from all the non-integer values. 
 
-The "First step" iterates over all the elements in the original string "find_number", where in line (16) it evaluates if a "-"
-sign is present in the string, this is called a "sign_event", after the evaluation, from lines (19 to 22) We take advantage of
-the operation of python (from the standard library), creating a test using "try" and "except", which basically allows us to
-establish whether the element under evaluation is an integer (append to debugged list "numbers") or not (continue with the rest
-of the elements).
+The "First step" iterates over all the elements in the original string "find_number", where in line (28) it evaluates if a "-"
+sign is present in the string, this is called a "sign_event" also considering that the integer is not started yet. Then, an
+importat condition is generated in line (33), this evaluation "cuts" the integer convertion if there is an non numerical value
+in between the elements of that integer, after the "number_exit" evaluation, from lines (35 to 44) we take advantage of the
+python operation (standard library functions), creating a test using "try" and "except", which basically allows us to 
+establish whether the element under evaluation is an integer (append to debugged list "numbers"), or not in the case it was not
+a valid numerical value the "except" condition triggers the "exit button" (number_exit), also, this "except" instruction allow
+us to disable the double sign condition in line (43), therefore, if any of the cases wasn't attached, it just continue with
+the rest of the string to integer convertion..
 
 An approximation of the computational complexity of "First step" is (roughly): O(n) considering that a linear search is
-carried out where "n" is the number of elements in the evaluated string, deepening a little more we can stablish the "counting
-instructions" as f(n) = 1 + 2*n + 1, where the "first 1" is the variable assignment (line 24), the "2*n" corresponds to the
-two evaluations applied inside the for loop (lines 26 and 28), and the "last 1" corresponds to the "insertion" of the
-debugged element in the list "numbers.
+carried out where "n" is the number of elements in the evaluated string, deepening a little more we can stablish
+(approximately) he "counting instructions" as f(n) = 1 + 2*n + 1, where the "first 1" is the variable assignment (line 30),
+the "4*n" corresponds to the four evaluations applied inside the for loop (lines 31, 36, 39 "try" and 42 "except") taking the
+"except" condition as only one evaluation, and the "last 1" corresponds to the "insertion" of the debugged element (inside the
+"try" evaluation) in the list "numbers" (line 40).
 
 ----------------------------------------------------------------------------------------------------
  **First step**   
 for i in range(len(find_number)):   # For loop for debugging not integer elements in the string.
-    num_let = find_number[i]
-    if num_let == '-':    # In case we have a "-" sign, it's stored in "sign_event" as "-1".
-        sign_event = -1
-    try:
-        numbers.append(int(num_let))   # List of debugged integers.
-    except:
-        continue
+   
+   num_let = find_number[i]
+   
+   if num_let == '-' and integer_started == False: # In case we have a "-" sign, it's stored in "sign_event" as "-1".
+       sign_event = -1
+
+   if number_exit == True:   # If there is a "non valid" number in the string (while a integer is getting debugged),
+       break                 # break the for loop.
+
+   try:
+       numbers.append(int(num_let))   # List of debugged integers.
+       integer_started = True   # Integer number correction is getting started.
+   except:
+       if num_let not in valid_numbers or integer_started == True:   # If in the middle of the integer convertion is a
+           number_exit = True                                        # "non-valid" number, or the integer has already
+       elif num_let == '+' or num_let == '-':                          # started, set number_exit to "True".
+           integer_started = True
+       else:
+           continue
 ----------------------------------------------------------------------------------------------------       
 
 For the "Second step", we have the final result development. The main idea here is to generate an iteravite "addition" the
 debugged elements of the list "numbers" (only integers list), the "secret" is to give each number a power depending on its
-position in the list of "numbers" (lines 41 and 42), and with each iteration the "power" counter (line 47) increments, and,
-as a result, the integer element power (line 42) decreases.
+position in the list of "numbers" (lines 66 and 67), and with each iteration the "power" counter (line 70) increments, and,
+as a result, the integer element power (line 65) decreases.
 
 As in the "First step", the "Second step" has (roughly) a computational complexity of O(m) where "m" is equal to (n - k) ("k"
 is the debugged elements of the original string). The "counting instructions" can be described as (approximately) f(m) = m + 5
-where the "m" is the "len(numbers)", and the "5" corresponds to the operations (lines 46, 47, 48 and 51) and the stop 
-condition (line 49).
+where the "m" is the "len(numbers)", and the "5" corresponds to the operations (lines 65, 66, 67 and 70) and the stop 
+condition (line 69).
 
 ----------------------------------------------------------------------------------------------------
 ** Second step **
